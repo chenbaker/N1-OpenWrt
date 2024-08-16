@@ -21,6 +21,7 @@ git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-pus
 
 echo "
 # 插件
+CONFIG_PACKAGE_luci-app-homeproxy=y
 CONFIG_PACKAGE_luci-app-ssr-plus=y
 CONFIG_PACKAGE_luci-app-pushbot=y
 " >> .config
