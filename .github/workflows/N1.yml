@@ -55,6 +55,12 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH --single-branch --depth=1 openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
+    - name: 缓存构建动作
+      uses: stupidloud/cachewrtbuild@main
+      with:
+        ccache: 'true'
+        mixkey: N1-${{ env.REPO_BRANCH }}
+        prefix: ${{ github.workspace }}/openwrt
 
     - name: 更新 & 安装 feeds
       working-directory: ./openwrt
@@ -95,12 +101,12 @@ jobs:
       uses: unifreq/openwrt_packit@master
       env:
         OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
-        KERNEL_VERSION_NAME: 5.15.158
+        KERNEL_VERSION_NAME: 5.15.152
         PACKAGE_SOC: diy
         GZIP_IMGS: .xz
         SCRIPT_DIY_PATH: N1/mk_s905d_n1.sh
-        WHOAMI: nantayo
-        SW_FLOWOFFLOAD: 0
+        WHOAMI: innmonkey
+        SW_FLOWOFFLOAD: 1
         SFE_FLOW: 0
         ENABLE_WIFI_K510: 0
 
@@ -126,4 +132,3 @@ jobs:
       with:
         keep_latest: 2
         delete_tags : true
-
