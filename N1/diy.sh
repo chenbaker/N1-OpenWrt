@@ -15,7 +15,6 @@ function git_sparse_clone() {
 
 
 # Add packages
-git clone https://github.com/nantayo/My-Pkg package/my-pkg
 git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/amlogic
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-ssr-plus
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-pushbot
